@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand: #4f46e5;
+  --color-brand-light: #818cf8;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100 font-sans antialiased overflow-x-hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-zinc-950;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full hover:bg-zinc-700 transition-colors;
+}
+
+/* Bento Grid Components */
+.bento-card {
+  @apply bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden transition-all duration-500 hover:border-zinc-700;
+}
+
+.featured-card {
+  @apply relative overflow-hidden shadow-2xl shadow-indigo-500/10;
+}
+
+.stat-card {
+  @apply bg-indigo-600 shadow-xl shadow-indigo-900/20 text-white border-none;
+}
+
+.interactive-card {
+  @apply cursor-pointer hover:translate-y-[-2px] hover:shadow-xl hover:shadow-black/40;
+}
+
+.glass-nav {
+  @apply bg-zinc-950/50 backdrop-blur-md border-b border-zinc-900;
+}

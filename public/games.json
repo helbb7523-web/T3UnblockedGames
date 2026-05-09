@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "title": "2048",
+    "description": "Join the numbers and get to the 2048 tile! A mathematically addictive puzzle game.",
+    "iframeUrl": "https://play2048.co/",
+    "thumbnail": "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=400&q=80",
+    "category": "Puzzle"
+  },
+  {
+    "id": "2",
+    "title": "Flappy Bird",
+    "description": "Flap your way through the pipes in this addictive arcade classic.",
+    "iframeUrl": "https://flappybird.io/",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80",
+    "category": "Arcade"
+  },
+  {
+    "id": "3",
+    "title": "Snake Classic",
+    "description": "The timeless game of snake. Eat the apples and grow as long as possible.",
+    "iframeUrl": "https://www.google.com/logos/2010/pacman10-i.html",
+    "thumbnail": "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=400&q=80",
+    "category": "Classic"
+  },
+  {
+    "id": "4",
+    "title": "Tetris",
+    "description": "Stack the blocks and clear the lines in the ultimate puzzle challenge.",
+    "iframeUrl": "https://tetris.com/play-tetris",
+    "thumbnail": "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=400&q=80",
+    "category": "Puzzle"
+  },
+  {
+    "id": "5",
+    "title": "Chess",
+    "description": "The classic game of strategy. Test your wits against the computer.",
+    "iframeUrl": "https://www.chess.com/play/computer",
+    "thumbnail": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&q=80",
+    "category": "Board"
+  },
+  {
+    "id": "6",
+    "title": "Slope",
+    "description": "Navigate a ball down a steep slope in this fast-paced infinite runner.",
+    "iframeUrl": "https://slopegame.online/",
+    "thumbnail": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&q=80",
+    "category": "Action"
+  },
+  {
+    "id": "7",
+    "title": "Pac-Man",
+    "description": "Chomp your way through the maze and avoid the ghosts.",
+    "iframeUrl": "https://www.google.com/logos/2010/pacman10-i.html",
+    "thumbnail": "https://images.unsplash.com/photo-1579309401359-1ec957f6c513?w=400&q=80",
+    "category": "Classic"
+  },
+  {
+    "id": "8",
+    "title": "Solitaire",
+    "description": "Clear all the cards in this relaxing single-player card game.",
+    "iframeUrl": "https://www.google.com/logos/2010/pacman10-i.html",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80",
+    "category": "Card"
+  }
+]
