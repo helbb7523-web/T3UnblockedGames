@@ -9,7 +9,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/games.json')
+    fetch('./games.json')
       .then((res) => res.json())
       .then((data) => {
         setGames(data);
@@ -82,110 +82,136 @@ export default function App() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <AnimatePresence mode="popLayout">
+              {/* Featured Item (2x2) */}
               {filteredGames.length > 0 && (
-                <>
-                  {/* Featured Item (2x2) */}
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="md:col-span-2 md:row-span-2 bento-card featured-card interactive-card group h-[400px] md:h-auto"
-                    onClick={() => setSelectedGame(filteredGames[0])}
-                  >
-                    <div className="absolute inset-0 z-0">
-                      <img
-                        src={filteredGames[0].thumbnail}
-                        alt="Featured"
-                        className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
-                    </div>
-                    <div className="absolute bottom-8 left-8 z-10 pr-8">
-                      <span className="px-3 py-1 bg-brand text-[10px] font-black rounded-full mb-3 inline-block uppercase tracking-widest">
-                        Featured Title
-                      </span>
-                      <h2 className="text-3xl md:text-5xl font-black mb-3 tracking-tighter">
-                        {filteredGames[0].title}
-                      </h2>
-                      <p className="text-zinc-400 text-sm max-w-sm mb-6 line-clamp-2">
-                        {filteredGames[0].description}
-                      </p>
-                      <button className="px-8 py-3 bg-white text-black font-black rounded-2xl hover:bg-brand hover:text-white transition-all uppercase tracking-widest text-xs shadow-xl">
-                        Play Now
-                      </button>
-                    </div>
-                  </motion.div>
-
-                  {/* Standard Items */}
-                  {filteredGames.slice(1).map((game) => (
-                    <motion.div
-                      layout
-                      key={game.id}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="bento-card interactive-card group p-5 flex flex-col justify-between"
-                      onClick={() => setSelectedGame(game)}
-                    >
-                      <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
-                        <img
-                          src={game.thumbnail}
-                          alt={game.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute top-2 right-2 px-2 py-1 bg-zinc-950/80 backdrop-blur-sm rounded-lg text-[9px] font-bold uppercase tracking-widest text-brand-light border border-zinc-800">
-                          {game.category}
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-black tracking-tight group-hover:text-brand transition-colors">
-                          {game.title}
-                        </h3>
-                        <p className="text-xs text-zinc-500 mt-1 line-clamp-1">
-                          {game.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-
-                  {/* Stat Panel (2x1) */}
-                  {filteredGames.length > 3 && (
-                    <div className="md:col-span-2 bento-card stat-card p-8 flex items-center justify-around">
-                      <div className="text-center">
-                        <div className="text-3xl font-black">14,281</div>
-                        <div className="text-[10px] uppercase font-black text-brand-light tracking-widest">Players Online</div>
-                      </div>
-                      <div className="w-px h-12 bg-white/10"></div>
-                      <div className="text-center">
-                        <div className="text-3xl font-black">{games.length}</div>
-                        <div className="text-[10px] uppercase font-black text-brand-light tracking-widest">Games Live</div>
-                      </div>
-                      <div className="w-px h-12 bg-white/10"></div>
-                      <div className="text-center">
-                        <div className="text-3xl font-black">99.9%</div>
-                        <div className="text-[10px] uppercase font-black text-brand-light tracking-widest">Uptime</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Feature/Social Items (1x1) */}
-                  <div className="bento-card p-6 flex flex-col items-center justify-center text-center gap-3 bg-zinc-900 group cursor-default">
-                    <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center font-bold text-zinc-500 group-hover:bg-brand group-hover:text-white transition-all">
-                      ?
-                    </div>
-                    <h4 className="font-bold text-sm">Request Game</h4>
-                    <p className="text-[10px] text-zinc-500 uppercase tracking-widest px-2">Can't find a title? Let us know!</p>
+                <motion.div
+                  layout
+                  key={filteredGames[0].id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="md:col-span-2 md:row-span-2 bento-card featured-card interactive-card group h-[400px] md:h-auto"
+                  onClick={() => setSelectedGame(filteredGames[0])}
+                >
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src={filteredGames[0].thumbnail}
+                      alt="Featured"
+                      className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                   </div>
-
-                  <div className="bento-card p-6 flex flex-col items-center justify-center text-center gap-3 bg-brand/5 border-brand/20 group cursor-pointer hover:bg-brand/10">
-                    <div className="w-12 h-12 bg-brand/20 rounded-full flex items-center justify-center text-brand">
-                      <Maximize2 className="w-5 h-5" />
-                    </div>
-                    <h4 className="font-bold text-sm">Fullscreen Mode</h4>
-                    <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Optimized for browsers</p>
+                  <div className="absolute bottom-8 left-8 z-10 pr-8">
+                    <span className="px-3 py-1 bg-brand text-[10px] font-black rounded-full mb-3 inline-block uppercase tracking-widest">
+                      Featured Title
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-black mb-3 tracking-tighter">
+                      {filteredGames[0].title}
+                    </h2>
+                    <p className="text-zinc-400 text-sm max-w-sm mb-6 line-clamp-2">
+                      {filteredGames[0].description}
+                    </p>
+                    <button className="px-8 py-3 bg-white text-black font-black rounded-2xl hover:bg-brand hover:text-white transition-all uppercase tracking-widest text-xs shadow-xl">
+                      Play Now
+                    </button>
                   </div>
-                </>
+                </motion.div>
+              )}
+
+              {/* Standard Items */}
+              {filteredGames.slice(1).map((game) => (
+                <motion.div
+                  layout
+                  key={game.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="bento-card interactive-card group p-5 flex flex-col justify-between"
+                  onClick={() => setSelectedGame(game)}
+                >
+                  <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
+                    <img
+                      src={game.thumbnail}
+                      alt={game.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-2 right-2 px-2 py-1 bg-zinc-950/80 backdrop-blur-sm rounded-lg text-[9px] font-bold uppercase tracking-widest text-brand-light border border-zinc-800">
+                      {game.category}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-black tracking-tight group-hover:text-brand transition-colors">
+                      {game.title}
+                    </h3>
+                    <p className="text-xs text-zinc-500 mt-1 line-clamp-1">
+                      {game.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Stat Panel (2x1) */}
+              {filteredGames.length > 3 && (
+                <motion.div 
+                  layout
+                  key="stats-panel"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="md:col-span-2 bento-card stat-card p-8 flex items-center justify-around"
+                >
+                  <div className="text-center">
+                    <div className="text-3xl font-black">14,281</div>
+                    <div className="text-[10px] uppercase font-black text-brand-light tracking-widest">Players Online</div>
+                  </div>
+                  <div className="w-px h-12 bg-white/10"></div>
+                  <div className="text-center">
+                    <div className="text-3xl font-black">{games.length}</div>
+                    <div className="text-[10px] uppercase font-black text-brand-light tracking-widest">Games Live</div>
+                  </div>
+                  <div className="w-px h-12 bg-white/10"></div>
+                  <div className="text-center">
+                    <div className="text-3xl font-black">99.9%</div>
+                    <div className="text-[10px] uppercase font-black text-brand-light tracking-widest">Uptime</div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Feature Items (1x1) */}
+              {filteredGames.length > 0 && (
+                <motion.div 
+                  layout
+                  key="request-card"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="bento-card p-6 flex flex-col items-center justify-center text-center gap-3 bg-zinc-900 group cursor-default"
+                >
+                  <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center font-bold text-zinc-500 group-hover:bg-brand group-hover:text-white transition-all">
+                    ?
+                  </div>
+                  <h4 className="font-bold text-sm">Request Game</h4>
+                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest px-2">Can't find a title? Let us know!</p>
+                </motion.div>
+              )}
+
+              {filteredGames.length > 0 && (
+                <motion.div 
+                  layout
+                  key="fullscreen-card"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="bento-card p-6 flex flex-col items-center justify-center text-center gap-3 bg-brand/5 border-brand/20 group cursor-pointer hover:bg-brand/10"
+                >
+                  <div className="w-12 h-12 bg-brand/20 rounded-full flex items-center justify-center text-brand">
+                    <Maximize2 className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold text-sm">Fullscreen Mode</h4>
+                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Optimized for browsers</p>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
